@@ -23,6 +23,9 @@ def main() -> int:
     if len(text) > 200:
         print("entry is over 200 characters", file=sys.stderr)
         return 1
+    if "\n" in text:
+        print("entry must be a single line", file=sys.stderr)
+        return 1
     out_dir = Path("/output")
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "entry.txt"
